@@ -21,6 +21,67 @@ python3 sendmessage.py 'title','line 1', 'line 2', 'line 3'[..., 'line x']
 ```
 python3 sendmessage.py --config='otherconfig.yml' 'title','line 1', 'line 2', 'line 3'[..., 'line x']
 ```
+4. config example for reference
+```
+bark:    #optional
+  endpoint: https://<your-host>/<your-key>/
+  groups:   #optional
+    - title: "group title 1"
+      group: "group1"
+    - title: "group title 2"
+      group: "group2"     
+    - default: "default" 
+  icons:    #optional
+    - title: "group title 1"
+      icon: "icon1"
+    - title: "group title 2"
+      icon: "icon2"     
+    - default: "defaulticon"
+  automaticallyCopy: 1    #optional
+  isArchive: 1    #optional
+  url: https://<another-url>    #optional
+  level: timeSensitive    #optional
+
+serverchan:    #optional
+  sckey: <your-sckey>
+
+pushplus:    #optional
+  token: <your-token>
+  channel: wechat   #optional
+  template: markdown    #optional
+
+iyuu:    #optional
+  token: <your-token>
+
+smtp:    #optional
+  server: <smtp-server, e.g. smtp.qq.com>
+  port: 465
+  sender: <sender-email, e.g. xxxx@qq.com>
+  authcode: <authorization-code>
+  recipient: <recipient-email, e.g. xxxx@163.com>
+
+dingtalk:    #optional
+  secret: <your-secret>
+  url: <your-webhook-url>
+
+feishu:    #optional
+  secret: <your-secret>
+  url: <your-webhook-url>
+
+wxbot:    #optional
+  url: <your-webhook-url>
+
+wxapp:    #optional
+  corpid: <your-corp-id>
+  secret: <your-app-secret>
+  agentid: <your-app-agentid>
+  touser: <to-user-id>
+  type: <message type, e.g. text>
+
+telegram:    #optional
+  token: <your-token>
+  chatid: <chat-id>
+```
 ## Environment:
 This script is developed under python version 3.10.  Ideally it works in most of the python 3.x version but the latest version is always recommended.
 Packages that you may need to install if you have not:
