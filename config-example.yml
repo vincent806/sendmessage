@@ -11,7 +11,7 @@ bark:    #optional
       icon: "icon1"
     - title: "group title 2"
       icon: "icon2"     
-    - default: "aabbcc"
+    - default: "defaulticon"
   automaticallyCopy: 1    #optional
   isArchive: 1    #optional
   url: https://<another-url>    #optional
@@ -29,7 +29,7 @@ iyuu:    #optional
   token: <your-token>
 
 smtp:    #optional
-  server: smtp.qq.com
+  server: <smtp-server, e.g. smtp.qq.com>
   port: 465
   sender: <sender-email, e.g. xxxx@qq.com>
   authcode: <authorization-code>
@@ -56,6 +56,3 @@ wxapp:    #optional
 telegram:    #optional
   token: <your-token>
   chatid: <your-chatid>
-  socks5host: <your-socks5-host>   #optional
-  socks5port: <your-socks5-host-port>    #optional
-
