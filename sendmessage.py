@@ -56,7 +56,7 @@ for optname,optvalue in opts:
         configpath = optvalue # config from -c or --config parameter
 print('reading config from: ' + configpath)
 
-with open(configpath, 'r') as file:
+with open(configpath, 'r', encoding='utf-8') as file:
     config = yaml.safe_load(file)
 
 class MessageFormatter():
