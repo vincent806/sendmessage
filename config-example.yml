@@ -1,21 +1,31 @@
 bark:    #optional
-  endpoint: https://<your-host>/<your-key>/
-  groups:   #optional
-    - title: "group title 1"
-      group: "group1"
-    - title: "group title 2"
-      group: "group2"     
-    - default: "default" 
-  icons:    #optional
-    - title: "group title 1"
-      icon: "icon1"
-    - title: "group title 2"
-      icon: "icon2"     
-    - default: "defaulticon"
-  automaticallyCopy: 1    #optional
+  endpoint: https://<your-url>/<your-key/
+  # default settings for other parameters
+  group: "default"
+  icon: "http://<your-host>/<your-default-icon.png>"
+  sound: paymentsuccess
+  automaticallyCopy: 0    #optional
   isArchive: 1    #optional
-  url: https://<another-url>    #optional
-  level: timeSensitive    #optional
+  url: "http://<your-url>/"    #optional
+  level: active    #optional
+  # tailor made parameters according to message title
+  tailoring:
+    - title: "example title 1"
+      group: "group1"
+      icon: "http://<your-host>/<your-icon-1.png>"
+      sound: "calypso"
+      automaticallyCopy: 0    #optional
+      isArchive: 1    #optional
+      url: "http://<your-url-1>/"    #optional
+      level: active    #optional
+    - title: "example title 2"
+      group: "group2"
+      icon: "http://<your-host>/<your-icon-2.png>"
+      sound: "bell"
+      automaticallyCopy: 0    #optional
+      isArchive: 1    #optional
+      url: "http://<your-url-2>/"    #optional
+      level: active    #optional
 
 serverchan:    #optional
   sckey: <your-sckey>
