@@ -65,6 +65,11 @@ class MessageFormatter():
         self.rounddigit = 2
     
     def convertBytes(self,inputstr):
+        # convert size in bytes into readable format
+        # criteria
+        # 1. only if 'nnnnnnnnnnnbytes' is in the string, where 'nnnnnnnnnnn' is integer
+        # 2. be careful that there is no space in between the 'nnnnnnnnnnn' and 'bytes'
+        # 3. be careful that it is 'bytes', not 'byte/Byte/Bytes/BYTE/BYTES'.
         outputstr = inputstr
         pattern = re.compile(r'\d*bytes')
         match = pattern.search(inputstr)
@@ -111,8 +116,8 @@ class Bark():
         self.delimiter = '\n'
 
     def push(self,config,content):
-        #handle message    
-        if(len(content)<=2):
+        #handle message
+        if(len(content)<2):
             title = "参数个数不对!"
             body = "null"
         else:
@@ -128,61 +133,84 @@ class Bark():
 
         #load config
         endpoint = config.get('endpoint')
-        groups = config.get('groups')
-        icons = config.get('icons')
+        #default config
+        group = config.get('group')
+        icon = config.get('icon')
+        sound = config.get('sound')
         automaticallyCopy = config.get('automaticallyCopy')
         isArchive = config.get('isArchive')
         url = config.get('url')
         level = config.get('level')
 
+        #get tailor made config
+        tailoring = config.get('tailoring')
+        if tailoring is not None:
+            for t in config.get('tailoring'):
+                t_title = t.get('title')
+                matchtitle = False
+                if isinstance(t_title, str):
+                    if title == t.get('title'):
+                        matchtitle = True
+                if isinstance(t_title,list):
+                    for e in t_title:
+                        if title == e:
+                            matchtitle = True
+                if matchtitle:
+                    t_group = t.get('group')
+                    t_icon = t.get('icon')
+                    t_sound = t.get('sound')
+                    t_automaticallyCopy = t.get('automaticallyCopy')
+                    t_isArchive = t.get('isArchive')
+                    t_url = t.get('url')
+                    t_level = t.get('level')
+                    if t_group is not None:
+                        group = t_group
+                    if t_icon is not None:
+                        icon = t_icon
+                    if t_sound is not None:
+                        sound = t_sound
+                    if t_automaticallyCopy is not None:
+                        automaticallyCopy = t_automaticallyCopy
+                    if t_isArchive is not None:
+                        isArchive = t_isArchive
+                    if t_url is not None:
+                        url = t_url
+                    if t_group is not None:
+                        level = t_level
+                    break
+
+        parameters = {}
+        if group is not None:
+            parameters['group'] = group
+        if icon is not None:
+            parameters['icon'] = icon
+        if sound is not None:
+            parameters['sound'] = sound
+        if automaticallyCopy is not None:
+            parameters['automaticallyCopy'] = automaticallyCopy
+        if isArchive is not None:
+            parameters['isArchive'] = isArchive
+        if url is not None:
+            parameters['url'] = url
+        if group is not None:
+            parameters['level'] = level
+
         #initialize endpoint
         if not endpoint.endswith("/"):
             endpoint = endpoint + "/"
-        header = {
-            "Content-Type": "application/json",
-            "Charset": "UTF-8"
-        }
+        parameter = ''
+        conchar = '?'
+        for k,v in parameters.items():
+            parameter = parameter + conchar + k + '=' + parse.quote_plus(str(v))
+            conchar = '&'
 
-        #format posting data
-        postdata = {}
-        postdata['title'] = title
-        postdata['body'] = body
-        if groups is not None:
-            for g in config['groups']:
-                grouptitle = g.get('title')
-                if grouptitle is not None:
-                    if title == grouptitle:
-                        postdata['group'] = g.get('group')
-                        break
-                defaultgroup = g.get('default')
-                if defaultgroup is not None:
-                    postdata['group'] = g.get('default')
-        if icons is not None:
-            for g in config['icons']:
-                icontitle = g.get('title')
-                if icontitle is not None:
-                    if title == icontitle:
-                        postdata['icon'] = g.get('icon')
-                        break
-                defaulticon = g.get('default')
-                if defaulticon is not None:
-                    postdata['icon'] = g.get('default')
-        if automaticallyCopy is not None:
-            postdata['automaticallyCopy'] = automaticallyCopy
-        if isArchive is not None:
-            postdata['isArchive'] = isArchive
-        if url is not None:
-            postdata['url'] = url
-        if level is not None:
-            postdata['level'] = level
+        endpoint = endpoint + parse.quote_plus(title) + '/'
+        endpoint = endpoint + parse.quote_plus(body) 
+        endpoint = endpoint + parameter
 
-        #send data to endpoint
+        #send data to bark server
         try:
-            data = json.dumps(postdata, ensure_ascii=False)
-            data = data.encode("utf-8")
-            #print(data)
-            handler = request.Request(url=endpoint, data=data, headers=header) 
-            resp = request.urlopen(handler) 
+            resp = request.urlopen(endpoint) 
             return(resp.read().decode())
         except HTTPError as e:
             # do something
@@ -208,7 +236,7 @@ class ServerChan():
 
     def push(self,config,content):
         #handle message    
-        if(len(content)<=2):
+        if(len(content)<2):
             title = "参数个数不对!"
             body = "null"
         else:
@@ -262,7 +290,7 @@ class PushPlus():
 
     def push(self,config,content):
         #handle message    
-        if(len(content)<=2):
+        if(len(content)<2):
             title = "参数个数不对!"
             body = "null"
         else:
@@ -318,7 +346,7 @@ class Iyuu():
 
     def push(self,config,content):
         #handle message    
-        if(len(content)<=2):
+        if(len(content)<2):
             title = "参数个数不对!"
             body = "null"
         else:
@@ -367,7 +395,7 @@ class SMTP():
 
     def push(self,config,content):
         #handle message    
-        if(len(content)<=2):
+        if(len(content)<2):
             title = "参数个数不对!"
             body = "null"
         else:
@@ -434,7 +462,7 @@ class DingTalk():
 
     def push(self,config,content):
         #handle message    
-        if(len(content)<=2):
+        if(len(content)<2):
             title = "参数个数不对!"
             body = "null"
         else:
@@ -508,7 +536,7 @@ class FeiShu():
 
     def push(self,config,content):
         #handle message    
-        if(len(content)<=2):
+        if(len(content)<2):
             title = "参数个数不对!"
             body = "null"
         else:
@@ -582,7 +610,7 @@ class WxBot():
 
     def push(self,config,content):
         #handle message    
-        if(len(content)<=2):
+        if(len(content)<2):
             title = "参数个数不对!"
             body = "null"
         else:
@@ -671,7 +699,7 @@ class WxApp():
 
     def push(self,config,content):
         #handle message    
-        if(len(content)<=2):
+        if(len(content)<2):
             title = "参数个数不对!"
             body = "null"
         else:
@@ -733,7 +761,7 @@ class Telegram():
 
     def push(self,config,content):
         #handle message    
-        if(len(content)<=2):
+        if(len(content)<2):
             title = "参数个数不对!"
             body = "null"
         else:
