@@ -24,23 +24,33 @@ python3 sendmessage.py --config='otherconfig.yml' 'title','line 1', 'line 2', 'l
 4. config example for reference
 ```
 bark:    #optional
-  endpoint: https://<your-host>/<your-key>/
-  groups:   #optional
-    - title: "group title 1"
-      group: "group1"
-    - title: "group title 2"
-      group: "group2"     
-    - default: "default" 
-  icons:    #optional
-    - title: "group title 1"
-      icon: "icon1"
-    - title: "group title 2"
-      icon: "icon2"     
-    - default: "defaulticon"
-  automaticallyCopy: 1    #optional
+  endpoint: https://<your-url>/<your-key/
+  # default settings for other parameters
+  group: "default"
+  icon: "http://<your-host>/<your-default-icon.png>"
+  sound: paymentsuccess
+  automaticallyCopy: 0    #optional
   isArchive: 1    #optional
-  url: https://<another-url>    #optional
-  level: timeSensitive    #optional
+  url: "http://<your-url>/"    #optional
+  level: active    #optional
+  # tailor made parameters according to message title
+  tailoring:
+    - title: "example title 1"
+      group: "group1"
+      icon: "http://<your-host>/<your-icon-1.png>"
+      sound: "calypso"
+      automaticallyCopy: 0    #optional
+      isArchive: 1    #optional
+      url: "http://<your-url-1>/"    #optional
+      level: active    #optional
+    - title: ["example title 2-1","example title 2-2"]
+      group: "group2"
+      icon: "http://<your-host>/<your-icon-2.png>"
+      sound: "bell"
+      automaticallyCopy: 0    #optional
+      isArchive: 1    #optional
+      url: "http://<your-url-2>/"    #optional
+      level: active    #optional
 
 serverchan:    #optional
   sckey: <your-sckey>
@@ -80,7 +90,7 @@ wxapp:    #optional
 
 telegram:    #optional
   token: <your-token>
-  chatid: <chat-id>
+  chatid: <your-chatid>
 ```
 ## Environment:
 This script is developed under python version 3.10.  Ideally it works in most of the python 3.x version but the latest version is always recommended.
