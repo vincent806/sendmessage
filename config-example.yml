@@ -18,7 +18,7 @@ bark:    #optional
       isArchive: 1    #optional
       url: "http://<your-url-1>/"    #optional
       level: active    #optional
-    - title: "example title 2"
+    - title: ["example title 2-1","example title 2-2"]
       group: "group2"
       icon: "http://<your-host>/<your-icon-2.png>"
       sound: "bell"
