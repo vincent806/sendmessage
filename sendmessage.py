@@ -1,6 +1,7 @@
 #
 # Author: vincent806
 # Date: 22Feb2022
+# Version: v0.1
 # Description:
 #   This script aims to build a generic kit to push message to various message channels.
 # Supported message channels:
