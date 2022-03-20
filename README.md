@@ -37,19 +37,19 @@ bark:
   url: "http://<your-url>/"    #optional
   level: active    #optional
   # tailor made parameters according to message title
-  tailoring:
-    - title: "example title 1"
-      group: "group1"
-      icon: "http://<your-host>/<your-icon-1.png>"
-      sound: "calypso"
+  tailoring:    #optional
+    - title: "example title 1"    #optional
+      group: "group1"    #optional
+      icon: "http://<your-host>/<your-icon-1.png>"    #optional
+      sound: "calypso"    #optional
       automaticallyCopy: 0    #optional
-      isArchive: 1    #optional
+      isArchive: 1    #optional    #optional
       url: "http://<your-url-1>/"    #optional
-      level: active    #optional
-    - title: ["example title 2-1","example title 2-2"]
-      group: "group2"
-      icon: "http://<your-host>/<your-icon-2.png>"
-      sound: "bell"
+      level: active    #optional    #optional
+    - title: ["example title 2-1","example title 2-2"]    #optional
+      group: "group2"    #optional
+      icon: "http://<your-host>/<your-icon-2.png>"    #optional
+      sound: "bell"    #optional
       automaticallyCopy: 0    #optional
       isArchive: 1    #optional
       url: "http://<your-url-2>/"    #optional
