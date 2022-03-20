@@ -12,7 +12,7 @@ This script aims to build a generic kit to push message to various message chann
   9. WxApp - App message for Enterpise Wechat
  10. Telegram - Bot
 ## Usage:
-1. Refer to section 'Config file example' to create your own config.yml and place in the same folder as sendmessage.py
+1. Refer to section 'config.yml example' to create your own config.yml and place in the same folder as sendmessage.py
 2. Call this script like this:
 ```
 python3 sendmessage.py 'title','line 1', 'line 2', 'line 3'[..., 'line x']
@@ -22,7 +22,7 @@ python3 sendmessage.py 'title','line 1', 'line 2', 'line 3'[..., 'line x']
 python3 sendmessage.py --config='otherconfig.yml' 'title','line 1', 'line 2', 'line 3'[..., 'line x']
 ```
 
-## Config file example
+## config.yml example
 
 Bark
 ```
