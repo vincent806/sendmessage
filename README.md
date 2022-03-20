@@ -60,7 +60,7 @@ bark:
       sound: "bell"    #optional
       automaticallyCopy: 0    #optional
       isArchive: 1    #optional
-      url: "http://<your-url-3/"    #optional
+      url: "http://<your-url-3>/"    #optional
       level: active    #optional
 ```
 **ServerChan**
