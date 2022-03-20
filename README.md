@@ -24,7 +24,7 @@ python3 sendmessage.py --config='otherconfig.yml' 'title','line 1', 'line 2', 'l
 
 ## config.yml example
 
-Bark
+**Bark**
 ```
 bark:    #optional
   endpoint: https://<your-url>/<your-key/
@@ -55,24 +55,24 @@ bark:    #optional
       url: "http://<your-url-2>/"    #optional
       level: active    #optional
 ```
-ServerChan
+**ServerChan**
 ```
 serverchan:    #optional
   sckey: <your-sckey>
 ```
-PushPlus
+**PushPlus**
 ```
 pushplus:    #optional
   token: <your-token>
   channel: wechat   #optional
   template: markdown    #optional
 ```
-Iyuu
+**Iyuu**
 ```
 iyuu:    #optional
   token: <your-token>
 ```
-SMTP
+**SMTP**
 ```
 smtp:    #optional
   server: <smtp-server, e.g. smtp.qq.com>
@@ -81,24 +81,24 @@ smtp:    #optional
   authcode: <authorization-code>
   recipient: <recipient-email, e.g. xxxx@163.com>
 ```
-DingTalk
+**DingTalk**
 ```
 dingtalk:    #optional
   secret: <your-secret>
   url: <your-webhook-url>
 ```
-FeiShu
+**FeiShu**
 ```
 feishu:    #optional
   secret: <your-secret>
   url: <your-webhook-url>
 ```
-WxBot
+**WxBot**
 ```
 wxbot:    #optional
   url: <your-webhook-url>
 ```
-WxApp
+**WxApp**
 ```
 wxapp:    #optional
   corpid: <your-corp-id>
@@ -107,7 +107,7 @@ wxapp:    #optional
   touser: <to-user-id>
   type: <message type, e.g. text>
 ```
-Telegram
+**Telegram**
 ```
 telegram:    #optional
   token: <your-token>
