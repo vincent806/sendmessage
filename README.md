@@ -139,7 +139,7 @@ config = sendmessage.ConfigLoader().loadConfig()  # by default it will load conf
 # step 3 - send the message
 
 # Bark example
-resp = sendmessage.Bark().push(config['bark'], ["subject","ln1","ln2"]) # you can add more lines it is flexible
+resp = sendmessage.Bark().push(config['bark'], ["subject","ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # ServerChan example
