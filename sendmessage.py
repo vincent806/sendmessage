@@ -155,10 +155,19 @@ class Bark():
                 if isinstance(t_title, str):
                     if title == t.get('title'):
                         matchtitle = True
-                if isinstance(t_title,list):
+                if isinstance(t_title, list):
                     for e in t_title:
-                        if title == e:
-                            matchtitle = True
+                        if isinstance(e, str):
+                            if title == e:
+                                matchtitle = True
+                        if isinstance(e, list):
+                            #list inside a list for regexp
+                            for r in e:
+                                ptn = re.compile(r)
+                                matchtitle = bool(ptn.search(title))
+                                if matchtitle:
+                                    break
+
                 if matchtitle:
                     t_group = t.get('group')
                     t_icon = t.get('icon')
