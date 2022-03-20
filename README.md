@@ -54,7 +54,7 @@ bark:
       isArchive: 1    #optional
       url: "http://<your-url-2>/"    #optional
       level: active    #optional
-    - title: [["your-regexp"]]
+    - title: [["your-regexp"]]    #optional
       group: "group3"    #optional
       icon: "http://<your-host>/<your-icon-3.png>"    #optional
       sound: "bell"    #optional
