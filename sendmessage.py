@@ -1,7 +1,6 @@
 #
 # Author: vincent806
 # Date: 22Feb2022
-# Version: v0.1
 # Description:
 #   This script aims to build a generic kit to push message to various message channels.
 # Supported message channels:
@@ -48,18 +47,22 @@ import hashlib
 import base64
 import getopt
 
-#load config file
-scriptdir = os.path.dirname(sys.argv[0])
-configpath = os.path.join(scriptdir,'config.yml') # default config
-opts,args = getopt.getopt(sys.argv[1:],'-c:',['config='])
-for optname,optvalue in opts:
-    if optname in ('-c','--config'):
-        configpath = optvalue # config from -c or --config parameter
-print('reading config from: ' + configpath)
+class ConfigLoader():
 
-with open(configpath, 'r', encoding='utf-8') as file:
-    config = yaml.safe_load(file)
-
+    def loadConfig(self,configpath="config.yml"):
+        configpath = configpath.strip()
+        basename = os.path.basename(configpath)
+        if(configpath == basename):
+            scriptdir = os.path.dirname(sys.argv[0])
+            configpath = os.path.join(scriptdir,configpath)
+        
+        print('reading config from: ' + configpath)
+    
+        with open(configpath, 'r', encoding='utf-8') as file:
+            config = yaml.safe_load(file)
+    
+        return(config)
+    
 class MessageFormatter():
 
     def __init__(self):
@@ -802,45 +805,54 @@ class Telegram():
 
 
 if __name__ == '__main__':
+
+    # load config
+    opts,args = getopt.getopt(sys.argv[1:],'-c:',['config='])
+    configpath = "config.yml"
+    for optname,optvalue in opts:
+        if optname in ('-c','--config'):
+            configpath = optvalue # config from -c or --config parameter
+            break
+    config = ConfigLoader().loadConfig(configpath)
     for service in config:
         if service == 'bark':
             handler = Bark()
             resp = handler.push(config[service], args)
-            print(service + ': ' + resp)
+            print(service + ': ' + str(resp))
         if service == 'serverchan':
             handler = ServerChan()
             resp = handler.push(config[service], args)
-            print(service + ': ' + resp)
+            print(service + ': ' + str(resp))
         if service == 'pushplus':
             handler = PushPlus()
             resp = handler.push(config[service], args)
-            print(service + ': ' + resp)
+            print(service + ': ' + str(resp))
         if service == 'iyuu':
             handler = Iyuu()
             resp = handler.push(config[service], args)
-            print(service + ': ' + resp)
+            print(service + ': ' + str(resp))
         if service == 'smtp':
             handler = SMTP()
             resp = handler.push(config[service], args)
-            print(service + ': ' + resp)
+            print(service + ': ' + str(resp))
         if service == 'dingtalk':
             handler = DingTalk()
             resp = handler.push(config[service], args)
-            print(service + ': ' + resp)
+            print(service + ': ' + str(resp))
         if service == 'feishu':
             handler = FeiShu()
             resp = handler.push(config[service], args)
-            print(service + ': ' + resp)
+            print(service + ': ' + str(resp))
         if service == 'wxbot':
             handler = WxBot()
             resp = handler.push(config[service], args)
-            print(service + ': ' + resp)
+            print(service + ': ' + str(resp))
         if service == 'wxapp':
             handler = WxApp()
             resp = handler.push(config[service], args)
-            print(service + ': ' + resp)
+            print(service + ': ' + str(resp))
         if service == 'telegram':
             handler = Telegram()
             resp = handler.push(config[service], args)
-            print(service + ': ' + resp)
+            print(service + ': ' + str(resp))
 
