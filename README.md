@@ -124,6 +124,9 @@ The author assumes no responsibility or liability for any errors or omissions in
 
 ## Cookbook:
 1. Use sendmessage in other python code
+
+Please refer to example code below:
+
 ```
 # step 1 - import sendmessage module
 import sendmessage
@@ -136,43 +139,60 @@ config = sendmessage.ConfigLoader().loadConfig()  # by default it will load conf
 # step 3 - send the message
 
 # Bark example
-resp = sendmessage.Bark().push(config['bark'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+resp = sendmessage.Bark().push(config['bark'], ["subject,"ln1","ln2"]) # you can add more lines it is flexible
 print(str(resp)) #print output
 
 # ServerChan example
-resp = sendmessage.ServerChan().push(config['serverchan'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+resp = sendmessage.ServerChan().push(config['serverchan'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # PushPlus example
-resp = sendmessage.PushPlus().push(config['pushplus'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+resp = sendmessage.PushPlus().push(config['pushplus'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # Iyuu example
-resp = sendmessage.Iyuu().push(config['iyuu'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+resp = sendmessage.Iyuu().push(config['iyuu'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # SMTP example
-resp = sendmessage.SMTP().push(config['smtp'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+resp = sendmessage.SMTP().push(config['smtp'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # DingTalk example
-resp = sendmessage.DingTalk().push(config['dingtalk'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+resp = sendmessage.DingTalk().push(config['dingtalk'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # FeiShu example
-resp = sendmessage.FeiShu().push(config['feishu'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+resp = sendmessage.FeiShu().push(config['feishu'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # WxBot example
-resp = sendmessage.WxBot().push(config['wxbot'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+resp = sendmessage.WxBot().push(config['wxbot'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # WxApp example
-resp = sendmessage.WxApp().push(config['wxapp'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+resp = sendmessage.WxApp().push(config['wxapp'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # Telegram example
-resp = sendmessage.Telegram().push(config['telegram'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+resp = sendmessage.Telegram().push(config['telegram'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
+```
+2. Send message to multiple message channels
+
+In config.yml file, you can put multiple message channels in any combination, for example, serverchan + iyuu + pushplus:
+
+```
+serverchan:    
+  sckey: <your-sckey>
+  
+pushplus:    
+  token: <your-token>
+  channel: wechat   #optional
+  template: markdown    #optional
+
+iyuu:    
+  token: <your-token>
+  
 ```
