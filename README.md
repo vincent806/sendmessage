@@ -54,6 +54,14 @@ bark:
       isArchive: 1    #optional
       url: "http://<your-url-2>/"    #optional
       level: active    #optional
+    - title: [["your-regexp"]]
+      group: "group3"    #optional
+      icon: "http://<your-host>/<your-icon-3.png>"    #optional
+      sound: "bell"    #optional
+      automaticallyCopy: 0    #optional
+      isArchive: 1    #optional
+      url: "http://<your-url-3/"    #optional
+      level: active    #optional
 ```
 **ServerChan**
 ```
