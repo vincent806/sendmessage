@@ -139,43 +139,43 @@ config = sendmessage.ConfigLoader().loadConfig()  # by default it will load conf
 # step 3 - send the message
 
 # Bark example
-resp = sendmessage.Bark().push(config['bark'], ["subject,"ln1","ln2"]) # you can add more lines it is flexible
+resp = sendmessage.Bark().push(config['bark'], ["subject","ln1","ln2"]) # you can add more lines it is flexible
 print(str(resp)) #print output
 
 # ServerChan example
-resp = sendmessage.ServerChan().push(config['serverchan'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
+resp = sendmessage.ServerChan().push(config['serverchan'], ["subject","ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # PushPlus example
-resp = sendmessage.PushPlus().push(config['pushplus'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
+resp = sendmessage.PushPlus().push(config['pushplus'], ["subject","ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # Iyuu example
-resp = sendmessage.Iyuu().push(config['iyuu'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
+resp = sendmessage.Iyuu().push(config['iyuu'], ["subject","ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # SMTP example
-resp = sendmessage.SMTP().push(config['smtp'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
+resp = sendmessage.SMTP().push(config['smtp'], ["subject","ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # DingTalk example
-resp = sendmessage.DingTalk().push(config['dingtalk'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
+resp = sendmessage.DingTalk().push(config['dingtalk'], ["subject","ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # FeiShu example
-resp = sendmessage.FeiShu().push(config['feishu'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
+resp = sendmessage.FeiShu().push(config['feishu'], ["subject","ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # WxBot example
-resp = sendmessage.WxBot().push(config['wxbot'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
+resp = sendmessage.WxBot().push(config['wxbot'], ["subject","ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # WxApp example
-resp = sendmessage.WxApp().push(config['wxapp'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
+resp = sendmessage.WxApp().push(config['wxapp'], ["subject","ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 # Telegram example
-resp = sendmessage.Telegram().push(config['telegram'], ["subject,"ln1","ln2"]) # you can add more lines, it is flexible
+resp = sendmessage.Telegram().push(config['telegram'], ["subject","ln1","ln2"]) # you can add more lines, it is flexible
 print(str(resp)) #print output
 
 ```
