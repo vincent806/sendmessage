@@ -12,7 +12,7 @@ This script aims to build a generic kit to push message to various message chann
   9. WxApp - App message for Enterpise Wechat
  10. Telegram - Bot
 ## Usage:
-1. Refer to config-example.yml and create your own config.yml
+1. Refer to step#4 to create your own config.yml
 2. Call this script like this:
 ```
 python3 sendmessage.py 'title','line 1', 'line 2', 'line 3'[..., 'line x']
@@ -22,6 +22,8 @@ python3 sendmessage.py 'title','line 1', 'line 2', 'line 3'[..., 'line x']
 python3 sendmessage.py --config='otherconfig.yml' 'title','line 1', 'line 2', 'line 3'[..., 'line x']
 ```
 4. config example for reference
+
+Bark
 ```
 bark:    #optional
   endpoint: https://<your-url>/<your-key/
@@ -51,43 +53,61 @@ bark:    #optional
       isArchive: 1    #optional
       url: "http://<your-url-2>/"    #optional
       level: active    #optional
-
+```
+ServerChan
+```
 serverchan:    #optional
   sckey: <your-sckey>
-
+```
+PushPlus
+```
 pushplus:    #optional
   token: <your-token>
   channel: wechat   #optional
   template: markdown    #optional
-
+```
+Iyuu
+```
 iyuu:    #optional
   token: <your-token>
-
+```
+SMTP
+```
 smtp:    #optional
   server: <smtp-server, e.g. smtp.qq.com>
   port: 465
   sender: <sender-email, e.g. xxxx@qq.com>
   authcode: <authorization-code>
   recipient: <recipient-email, e.g. xxxx@163.com>
-
+```
+DingTalk
+```
 dingtalk:    #optional
   secret: <your-secret>
   url: <your-webhook-url>
-
+```
+FeiShu
+```
 feishu:    #optional
   secret: <your-secret>
   url: <your-webhook-url>
-
+```
+WxBot
+```
 wxbot:    #optional
   url: <your-webhook-url>
-
+```
+WxApp
+```
 wxapp:    #optional
   corpid: <your-corp-id>
   secret: <your-app-secret>
   agentid: <your-app-agentid>
   touser: <to-user-id>
   type: <message type, e.g. text>
-
+```
+Telegram
+```
 telegram:    #optional
   token: <your-token>
   chatid: <your-chatid>
