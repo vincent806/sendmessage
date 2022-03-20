@@ -121,3 +121,58 @@ pip3 install pyyaml
 ```
 ## Disclaimer:
 The author assumes no responsibility or liability for any errors or omissions in this script.
+
+## Cookbook:
+1. Use sendmessage in other python code
+```
+# step 1 - import sendmessage module
+import sendmessage
+
+# step 2 - load config file
+# - for windows: config = sendmessage.ConfigLoader().loadConfig(r"C:\Users\Username\myfolder\config.yml")
+# - for linux: config = sendmessage.ConfigLoader().loadConfig("/home/username/myfolder/config.yml")
+config = sendmessage.ConfigLoader().loadConfig()  # by default it will load config.yml in the same folder as sendmessage.py
+
+# step 3 - send the message
+
+# Bark example
+resp = sendmessage.Bark().push(config['bark'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+print(str(resp)) #print output
+
+# ServerChan example
+resp = sendmessage.ServerChan().push(config['serverchan'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+print(str(resp)) #print output
+
+# PushPlus example
+resp = sendmessage.PushPlus().push(config['pushplus'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+print(str(resp)) #print output
+
+# Iyuu example
+resp = sendmessage.Iyuu().push(config['iyuu'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+print(str(resp)) #print output
+
+# SMTP example
+resp = sendmessage.SMTP().push(config['smtp'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+print(str(resp)) #print output
+
+# DingTalk example
+resp = sendmessage.DingTalk().push(config['dingtalk'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+print(str(resp)) #print output
+
+# FeiShu example
+resp = sendmessage.FeiShu().push(config['feishu'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+print(str(resp)) #print output
+
+# WxBot example
+resp = sendmessage.WxBot().push(config['wxbot'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+print(str(resp)) #print output
+
+# WxApp example
+resp = sendmessage.WxApp().push(config['wxapp'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+print(str(resp)) #print output
+
+# Telegram example
+resp = sendmessage.Telegram().push(config['telegram'], ["subject,"line1","line2"]) # you can add more lines as you wish, it is flexible
+print(str(resp)) #print output
+
+```
