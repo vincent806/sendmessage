@@ -209,22 +209,45 @@ class Bark():
             parameters['level'] = level
 
         #initialize endpoint
-        if not endpoint.endswith("/"):
-            endpoint = endpoint + "/"
-        parameter = ''
-        conchar = '?'
-        for k,v in parameters.items():
-            parameter = parameter + conchar + k + '=' + parse.quote_plus(str(v))
-            conchar = '&'
+        if isinstance(endpoint, list):
+            endpoints = []
+            for e in endpoint:
+                if not e.endswith("/"):
+                    e = e + "/"
+                parameter = ''
+                conchar = '?'
+                for k,v in parameters.items():
+                    parameter = parameter + conchar + k + '=' + parse.quote_plus(str(v))
+                    conchar = '&'
 
-        endpoint = endpoint + parse.quote_plus(title) + '/'
-        endpoint = endpoint + parse.quote_plus(body) 
-        endpoint = endpoint + parameter
+                e = e + parse.quote_plus(title) + '/'
+                e = e + parse.quote_plus(body) 
+                e = e + parameter
+                endpoints.append(e)
+        else:
+            if not endpoint.endswith("/"):
+                endpoint = endpoint + "/"
+            parameter = ''
+            conchar = '?'
+            for k,v in parameters.items():
+                parameter = parameter + conchar + k + '=' + parse.quote_plus(str(v))
+                conchar = '&'
+    
+            endpoint = endpoint + parse.quote_plus(title) + '/'
+            endpoint = endpoint + parse.quote_plus(body) 
+            endpoint = endpoint + parameter
 
         #send data to bark server
         try:
-            resp = request.urlopen(endpoint) 
-            return(resp.read().decode())
+            if isinstance(endpoint, list):
+                resps = []
+                for e in endpoints:
+                    resp = request.urlopen(e)
+                    resps.append(resp.read().decode())
+                return(resps)
+            else:
+                resp = request.urlopen(endpoint) 
+                return(resp.read().decode())
         except HTTPError as e:
             # do something
             return('Error code: ', e.code)
