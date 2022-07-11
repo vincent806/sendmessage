@@ -28,7 +28,8 @@ python3 sendmessage.py --config='otherconfig.yml' 'title','line 1', 'line 2', 'l
 
 ```
 bark:    
-  endpoint: https://<your-url>/<your-key/
+  endpoint: https://<your-url>/<your-key>/
+  #endpoint: ["https://<your-url1>/<your-key1>/","https://<your-url2>/<your-key2>/","https://<your-url3>/<your-key3>"] #for multpile endpoints
   # default settings for other parameters
   group: "default"
   icon: "http://<your-host>/<your-default-icon.png>"
